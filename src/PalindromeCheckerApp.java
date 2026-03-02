@@ -1,30 +1,45 @@
+/**
+ * =========================================
+ * MAIN CLASS – UseCase8PalindromeCheckerApp
+ * =========================================
+ *
+ * Use Case 8: LinkedList Based Palindrome Check
+ *
+ * Description:
+ * This class checks whether a string is a palindrome
+ * using a LinkedList by comparing first and last elements.
+ *
+ * @author Developer
+ * @version 8.0
+ */
 
-import java.util.Stack;
+import java.util.LinkedList;
 
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // Declare and initialize the input string
-        String input = "noon";
+        // Define the input string
+        String input = "level";
 
-        // Create a Stack to store characters
-        Stack<Character> stack = new Stack<>();
+        // Create a LinkedList to store characters
+        LinkedList<Character> list = new LinkedList<>();
 
-        // Push each character of the string into the stack
+        // Add each character to the linked list
         for (char c : input.toCharArray()) {
-            stack.push(c);
+            list.add(c);
         }
 
-        // Assume palindrome initially
+        // Flag to track palindrome state
         boolean isPalindrome = true;
 
-        // Iterate again through original string
-        for (char c : input.toCharArray()) {
+        // Compare until only one or zero elements remain
+        while (list.size() > 1) {
 
-            char popped = stack.pop();
+            char first = list.removeFirst();
+            char last = list.removeLast();
 
-            if (c != popped) {
+            if (first != last) {
                 isPalindrome = false;
                 break;
             }
